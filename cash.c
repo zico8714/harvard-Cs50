@@ -1,7 +1,8 @@
 #include <stdio.h>
 #include <cs50.h>
+//includes math.h
 #include <math.h>
-
+//starts
 int main(void)
 {
     int coins = 0;
@@ -11,14 +12,15 @@ int main(void)
     //Prompt user to get float
     do
     {
-    o = get_float("What do I owe you?\n");      
+        o = get_float("What do I owe you?\n");      
     }
-    while(o < 0);
+    while (o < 0);
     
     int Round = round(o * 100);
     do
     {
-    if (Round >= 25)
+        //loop starts
+        if (Round >= 25)
         {
             Round -= 25;
             coins++;
@@ -38,6 +40,8 @@ int main(void)
             Round -= 1;
             coins++;
         }
-    }while(Round > 0);
-        printf("%i\n", coins);
+    }
+    while (Round > 0);
+    //prints solution
+    printf("%i\n", coins);
 }
