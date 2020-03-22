@@ -34,7 +34,6 @@ int main(void)
 
      sumT = sum + sum2;
      if(sumT % 10 != 0)
-        printf("nonnonon\n");
      
      if(sumT % 10 == 0)
      {
