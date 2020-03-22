@@ -34,12 +34,13 @@ int main(void)
 
      sumT = sum + sum2;
      if(sumT % 10 != 0)
+        printf("INVALID\n");
      
      if(sumT % 10 == 0)
      {
-         if((num > 4000000000000) && (num < 4999999999999))
+         if(num > 4000000000000 && num < 4999999999999)
              printf("VISA\n");
-         else if((num > 40000000000000000) && (num > 4999999999999999))
+         else if(num > 4000000000000000 && num < 4999999999999999)
              printf("VISA\n");
          else if(num > 340000000000000 && num < 379999999999999)
             printf("AMEX\n");
