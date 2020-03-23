@@ -33,6 +33,7 @@ int main(void)
     }
 
      sumT = sum + sum2;
+        printf("%i\n", )
      if(sumT % 10 != 0)
         printf("INVALID\n");
      
