@@ -9,7 +9,7 @@ int main(void)
     long cc;
     long sum=0;
     int sum2 = 0;
-    int sumT;
+    int sumT = 0;
     do
     {
         num = get_long("Number: \n");
@@ -31,7 +31,7 @@ int main(void)
         sum2 += digit;
         cc /= 100;
     }
-
+    
      sumT = sum + sum2;
      if(sumT % 10 != 0)
         printf("INVALID\n");
@@ -42,7 +42,9 @@ int main(void)
              printf("VISA\n");
          else if(num > 4000000000000000 && num < 4999999999999999)
              printf("VISA\n");
-         else if(num > 340000000000000 && num < 379999999999999)
+         else if(num > 340000000000000 && num < 349999999999999)
+            printf("AMEX\n");
+        else if(num > 370000000000000 && num < 379999999999999)
             printf("AMEX\n");
         else if(num > 5100000000000000 && num < 5599999999999999)
             printf("MASTERCARD\n");
