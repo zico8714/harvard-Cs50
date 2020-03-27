@@ -28,6 +28,10 @@ int main (void)
     float index = 0.0588 * L - 0.296 * S - 15.8;
     int redon = round(index);
 
+    if(redon < 0)
+    printf("Before Grade 1\n");
+    else
+    {
     switch(redon)
     {
         case 0:
@@ -80,6 +84,7 @@ int main (void)
         break;
         default:
             printf("Grade 16+\n");
+    }
     }
 
 }
