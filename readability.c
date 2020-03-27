@@ -31,55 +31,55 @@ int main (void)
     switch(redon)
     {
         case 0:
-            printf("Before Grade 1");
+            printf("Before Grade 1\n");
         break;
         case 1:
-            printf("Before Grade 1");
+            printf("Before Grade 1\n");
         break;
         case 2:
-            printf("Grade 2");
+            printf("Grade 2\n");
         break;
         case 3:
-            printf("Grade 3");
+            printf("Grade 3\n");
         break;
         case 4:
-            printf("Grade 4");
+            printf("Grade 4\n");
         break;
         case 5:
-            printf("Grade 5");
+            printf("Grade 5\n");
         break;
         case 6:
-            printf("Grade 6");
+            printf("Grade 6\n");
         break;
         case 7:
-            printf("Grade 7");
+            printf("Grade 7\n");
         break;
         case 8:
-            printf("Grade 8");
+            printf("Grade 8\n");
         break;
         case 9:
-            printf("Grade 9");
+            printf("Grade 9\n");
         break;
         case 10:
-            printf("Grade 10");
+            printf("Grade 10\n");
         break;
         case 11:
-            printf("Grade 11");
+            printf("Grade 11\n");
         break;
         case 12:
-            printf("Grade 12");
+            printf("Grade 12\n");
         break;
         case 13:
-            printf("Grade 13");
+            printf("Grade 13\n");
         break;
         case 14:
-            printf("Grade 14");
+            printf("Grade 14\n");
         break;
         case 15:
-            printf("Grade 15");
+            printf("Grade 15\n");
         break;
         default:
-            printf("Grade 16+");
+            printf("Grade 16+\n");
     }
 
 }
