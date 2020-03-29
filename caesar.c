@@ -6,78 +6,54 @@
 
 int main(int argc, string argv[])
 {
-    if(argc == 1)
-    {
+    int change;
 
+    if (argc != 2)
+    {
         printf("Usage: ./caesar key\n");
         return 1;
     }
     else
     {
-
-    int check = 1;
-
-    if(argc == 2)
-    {
-        for(int i = 0; i < argc; i++)
+        for (int i = 0; i < argc; i++)
         {
-            if(isdigit(argv[1][i]))
+            if (isalpha(argv[1][i]))
             {
-            check = 0;
+                printf("Usage: ./caesar key\n");
+                return 1;
+            }
+        }
+
+        change = atoi(argv[1]);
+    }
+
+    printf("plaintext: ");
+
+    string plt = get_string("");
+
+    for (int i = 0, n = strlen(plt); i < n; i++)
+        {
+            if (isalpha(plt[i]))
+            {
+                if (islower(plt[i]))
+                {
+                    int low = ((plt[i] - 97) + change) % 26;
+                    int res = low + 97;
+                    printf("%c", res);
+
+                }
+                else
+                {
+                    int upp = ((plt[i] - 65) + change) % 26;
+                    int res = upp + 65;
+                    printf("%c", res);
+                }
             }
             else
             {
-            check++;
+                printf("%c", plt[i]);
             }
         }
-    }
-
-        int change = atoi(argv[1]);
-
-    if(check != 0)
-    {
-
-        printf("Usage: ./caesar key\n");
-
-    }
-    else
-    {
-
-        printf("plaintext: ");
-
-    }
-
-    string pt = get_string("");
-
-    printf("ciphertext: ");
-
-
-
-
-    for (int i = 0,a = strlen(pt); i < a; i++)
-    {
-        if(isalpha(pt[i]))
-        {
-            if(isupper(pt[i]))
-            {
-                int c = (pt[i] + change) % 26;
-                printf("%i", c);
-            }
-            else
-            {
-                int c = (pt[i] + change) % 26;
-                printf("%i\n", c);
-            }
-        }
-        else
-        {
-
-            printf("%i\n", pt[i]);
-
-        }
-
-    }
-    }
     printf("\n");
     return 0;
 }
