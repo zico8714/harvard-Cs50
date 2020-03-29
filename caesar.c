@@ -10,7 +10,7 @@ int main(int argc, string argv[])
     {
 
         printf("Usage: ./caesar key\n");
-
+        return 1;
     }
     else
     {
@@ -52,7 +52,8 @@ int main(int argc, string argv[])
 
     printf("ciphertext: ");
 
-    for (int i = 0, a = strlen(pt); i < a; i++)
+
+    for (int i = 0,a = strlen(pt); i < a; i++)
     {
         if(isalpha(pt[i]))
         {
@@ -75,7 +76,7 @@ int main(int argc, string argv[])
                 {
                     int num = pt[i] - 123;
                     int final = (97 + change) + num;
-                    printf("%c\n", final);
+                    printf("%c", final);
                 }
                 else
                 {
@@ -92,10 +93,7 @@ int main(int argc, string argv[])
         }
 
     }
-
-    printf("\n");
-
-
-
     }
+    printf("\n");
+    return 0;
 }
