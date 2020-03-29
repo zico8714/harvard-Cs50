@@ -31,6 +31,8 @@ int main(int argc, string argv[])
 
     string plt = get_string("");
 
+    printf("ciphertext: ");
+
     for (int i = 0, n = strlen(plt); i < n; i++)
         {
             if (isalpha(plt[i]))
