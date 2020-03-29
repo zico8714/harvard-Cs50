@@ -54,6 +54,5 @@ int main(int argc, string argv[])
                 printf("%c", plt[i]);
             }
         }
-    printf("\n");
     return 0;
 }
