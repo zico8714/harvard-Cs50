@@ -3,15 +3,18 @@
 #include <ctype.h>
 #include <string.h>
 #include <stdlib.h>
+//Include needed libraries
 
 int main(int argc, string argv[])
 {
+    //decalre ints
     int change;
-
+    //check validity
     if (argc != 2)
     {
         printf("Usage: ./caesar key\n");
         return 1;
+        //stops if more or less than 2 args
     }
     else
     {
@@ -25,6 +28,7 @@ int main(int argc, string argv[])
         }
 
         change = atoi(argv[1]);
+        //changes to integer
     }
 
     printf("plaintext: ");
@@ -34,28 +38,29 @@ int main(int argc, string argv[])
     printf("ciphertext: ");
 
     for (int i = 0, n = strlen(plt); i < n; i++)
+    {
+        if (isalpha(plt[i]))
         {
-            if (isalpha(plt[i]))
+            if (islower(plt[i]))
             {
-                if (islower(plt[i]))
-                {
-                    int low = ((plt[i] - 97) + change) % 26;
-                    int res = low + 97;
-                    printf("%c", res);
-
-                }
-                else
-                {
-                    int upp = ((plt[i] - 65) + change) % 26;
-                    int res = upp + 65;
-                    printf("%c", res);
-                }
+                //if lowercase
+                int low = ((plt[i] - 97) + change) % 26;
+                int res = low + 97;
+                printf("%c", res);
             }
             else
             {
-                printf("%c", plt[i]);
+                //if uppercase
+                int upp = ((plt[i] - 65) + change) % 26;
+                int res = upp + 65;
+                printf("%c", res);
             }
         }
+        else
+        {
+            printf("%c", plt[i]);
+        }
+    }
     printf("\n");
     return 0;
 }
