@@ -31,17 +31,35 @@ int main(int argc, string argv[])
             {
                 count++;
             }
+
+            int h = 0;
+
+            for (int j = 0; j < n; j++)
+                {
+
+                    if (argv[1][j] == argv[1][i])
+                    {
+                        h++;
+                    }
+                    if(h < 1)
+                {
+                    printf("Letters should not be repeated.\n");
+                    return 1;
+                }
+
+                }
+
         }
 
 
     }
 
     //checks quantity of letters
-    //if(count != 26)
-    //{
-     //   printf("The key should have a length of 26.\n");
-    //    return 1;
-    //}
+    if(count != 26)
+    {
+        printf("The key should have a length of 26.\n");
+        return 1;
+    }
 
     printf("plaintext: ");
 
