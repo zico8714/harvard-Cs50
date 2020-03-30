@@ -36,16 +36,19 @@ int main(int argc, string argv[])
 
             for (int j = 0; j < n; j++)
                 {
+                    int asd = tolower(argv[1][j]);
+                    int qwe = tolower(argv[1][i]);
 
-                    if (argv[1][j] == argv[1][i])
+                    if (asd == qwe)
                     {
                         h++;
                     }
-                    if(h < 1)
-                {
-                    printf("Letters should not be repeated.\n");
-                    return 1;
-                }
+
+                    if(h > 1)
+                    {
+                        printf("Letters should not be repeated.\n");
+                        return 1;
+                    }
 
                 }
 
