@@ -35,30 +35,31 @@ int main(int argc, string argv[])
             int h = 0;
 
             for (int j = 0; j < n; j++)
-                {
-                    int asd = tolower(argv[1][j]);
-                    int qwe = tolower(argv[1][i]);
+            {
+                int asd = tolower(argv[1][j]);
+                int qwe = tolower(argv[1][i]);
 
-                    if (asd == qwe)
-                    {
-                        h++;
-                    }
+            if (asd == qwe)
+            {
+                h++;
+            }
 
-                    if(h > 1)
-                    {
-                        printf("Letters should not be repeated.\n");
-                        return 1;
-                    }
-
-                }
+            if (h > 1)
+            {
+                printf("Letters should not be repeated.\n");
+                return 1;
+            }
+            //asd
+            }
 
         }
 
 
     }
+    //asdasd
 
     //checks quantity of letters
-    if(count != 26)
+    if (count != 26)
     {
         printf("The key should have a length of 26.\n");
         return 1;
@@ -74,29 +75,31 @@ int main(int argc, string argv[])
 
     for (int i = 0, n = strlen(plt); i < n; i++)
     {
+        //asd
         if (isalpha(plt[i]))
         {
             int nuev[26];
-                int h;
-                for (int j = 0; j < 26; j++)
+            int h;
+            for (int j = 0; j < 26; j++)
+            {
+                nuev[j] = argv[1][j];
+                if (nuev[j] == plt[i])
                 {
-                    nuev[j] = argv[1][j];
-                    if (nuev[j] == plt[i])
-                    {
-                        h = nuev[j];
-                    }
+                h = nuev[j];
                 }
+            }
             if (islower(plt[i]))
             {
 
-                    int f = plt[i] - 97;
-                    printf("%c", tolower(nuev[f]));
+                int f = plt[i] - 97;
+                printf("%c", tolower(nuev[f]));
 
             }
+            //asdasd
             else
             {
-                    int f = plt[i] - 65;
-                    printf("%c", toupper(nuev[f]));
+                int f = plt[i] - 65;
+                printf("%c", toupper(nuev[f]));
 
             }
         }
@@ -105,6 +108,7 @@ int main(int argc, string argv[])
             printf("%c", plt[i]);
         }
     }
+    //asd
     printf("\n");
     return 0;
 }
