@@ -91,7 +91,7 @@ void print_winner(void)
     }
 
     for (int i = 0; i < candidate_count; i++)
-    
+
         if (suma == 0)
         {
             return;
@@ -102,10 +102,17 @@ void print_winner(void)
             for (int j = 0; j < candidate_count; j++)
             {
                 if (candidates[i].votes >= candidates[j].votes)
+
+                {
                     count++;
+                }
+
             }
             if (count == candidate_count)
-                printf("%s\n", candidates[i].name);
-        }
 
+            {
+                printf("%s\n", candidates[i].name);
+            }
+
+        }
 }
