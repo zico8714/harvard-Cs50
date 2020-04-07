@@ -186,7 +186,6 @@ int find_min(void)
             }
         }
     }
-    printf("el minimo es %i\n", minimo);
     return minimo;
 }
 
@@ -198,7 +197,6 @@ bool is_tie(int min)
         if (candidates[i].votes != min)
             return false;
     }
-    printf("sisiisis\n");
     return true;
 }
 
