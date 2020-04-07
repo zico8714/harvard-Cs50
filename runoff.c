@@ -130,7 +130,7 @@ bool vote(int voter, int rank, string nombre)
 {
     for (int a = 0; a < candidate_count; a++)
     {
-        if (strcmp(candidates[a].name , nombre) == 0)
+        if (strcmp(candidates[a].name, nombre) == 0)
         {
             preferences[voter][rank] = a;
             return true;
@@ -180,7 +180,7 @@ int find_min(void)
     {
         if (!candidates[i].eliminated && candidates[i].votes < minimo)
         {
-                minimo = candidates[i].votes;
+            minimo = candidates[i].votes;
         }
     }
     return minimo;
@@ -189,10 +189,12 @@ int find_min(void)
 // Return true if the election is tied between all candidates, false otherwise
 bool is_tie(int min)
 {
-    for ( int i = 0; i < candidate_count; i++)
+    for (int i = 0; i < candidate_count; i++)
     {
         if (candidates[i].votes != min && !candidates[i].eliminated)
+        {
             return false;
+        }
     }
     return true;
 }
@@ -203,7 +205,10 @@ void eliminate(int min)
     for (int i = 0; i < candidate_count; i++)
     {
         if (candidates[i].votes == min)
+        {
             candidates[i].eliminated = true;
+        }
     }
+
     return;
 }
