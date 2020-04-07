@@ -180,7 +180,7 @@ int find_min(void)
     {
         if (!candidates[i].eliminated)
         {
-            if (candidates[i].votes <= minimo)
+            if (candidates[i].votes < minimo)
             {
                 minimo = candidates[i].votes;
             }
