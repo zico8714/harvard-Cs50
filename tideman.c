@@ -170,11 +170,12 @@ void lock_pairs(void)
         locked[pairs[j].winner][pairs[j].loser] = true;
     }
 
-    if (pairs[pair_count - 1].loser == pairs[0].winner)
-    {
-        locked[pairs[pair_count - 1].winner][pairs[pair_count - 1].loser] = false;
-    }
-
+    
+   // if (pairs[pair_count - 1].loser == pairs[0].winner)
+    //{
+    //    locked[pairs[pair_count - 1].winner][pairs[pair_count - 1].loser] = false;
+   // }
+////
     for (int i = 0; i < pair_count; i++)
     {
         if (locked[pairs[i].winner][pairs[i].loser] == true && pairs[i].loser == pairs[0].winner)
