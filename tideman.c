@@ -198,7 +198,7 @@ void print_winner(void)
         }
         if (count == pair_count - 1)
         {
-            printf("%s\n", candidates[i]);
+            printf("%s\n", candidates[j]);
         }
     return;
 }
