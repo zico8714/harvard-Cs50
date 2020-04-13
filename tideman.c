@@ -199,7 +199,7 @@ void print_winner(void)
                 count++;
             }
         }
-        if (count == pair_count)
+        if (count == candidate_count - 1)
         {
             printf("%s\n", candidates[i]);
             return;
