@@ -189,7 +189,8 @@ void lock_pairs(void)
 void print_winner(void)
 {
         int count = 0;
-        for (int j = 0; j < pair_count; j++)
+        int j = 0;
+        for (j = 0; j < pair_count; j++)
         {
             if (locked[j][j + 1] == true)
             {
