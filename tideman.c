@@ -220,10 +220,24 @@ void print_winner(void)
         if (count == candidate_count - 1)
         {
             printf("%s\n", candidates[i]);
+            return;
         }
-        else
+    }
+
+
+    int count1 = 0;
+    for (int i = 0; i < candidate_count; i++)
+    {
+        for (int j = 0; j < candidate_count; j++)
         {
-            printf("%s\n", candidates[pairs[0].winner]);
+            if (locked[j][i] == false)
+            {
+                count1++;
+            }
+            if (count1 == candidate_count)
+            {
+                printf("%s\n", candidates[i]);
+            }
         }
     }
     return;
