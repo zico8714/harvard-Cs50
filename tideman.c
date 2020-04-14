@@ -186,6 +186,10 @@ void lock_pairs(void)
 //Check function made
 bool check(int n, int l)
 {
+    //to dont have a cycle, winner[i] has to be winner of loser's loser.
+    //(see like a triangle)
+    //Need a recursive function to check if loser's loser, and new loser's loser, and so on,
+    //ends up being winner of first winner
     for (int i = 0; i < candidate_count; i++)
     {
         if (locked[l][i] == true)
@@ -206,10 +210,7 @@ bool check(int n, int l)
 // Print the winner of the election
 void print_winner(void)
 {
-
-
-    //If theres no winner till here, then, (having locked "false" every cycle)
-    //The candidate who has no arrows pionting to him is the winner.
+    //The candidate who has no arrows pointing to him is the winner.
     for (int i = 0; i < candidate_count; i++)
     {
         int count1 = 0;
