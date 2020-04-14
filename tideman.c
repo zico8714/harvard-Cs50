@@ -32,6 +32,7 @@ void record_preferences(int ranks[]);
 void add_pairs(void);
 void sort_pairs(void);
 void lock_pairs(void);
+bool check(int n, int l);
 void print_winner(void);
 
 int main(int argc, string argv[])
@@ -169,7 +170,7 @@ void lock_pairs(void)
     {
         for (int j = 0; j < pair_count; j++)
         {
-            if (pairs[j].loser == pairs[0].winner)
+            if (check(pairs[j].winner, pairs[j].loser))
             {
                 locked[pairs[j].winner][pairs[j].loser] = false;
             }
@@ -182,14 +183,34 @@ void lock_pairs(void)
     return;
 }
 
+//Check function made
+bool check(int n, int l)
+{
+    for (int i = 0; i < candidate_count; i++)
+    {
+        if (locked[l][i] == true)
+        {
+            if (locked[i][n] == true)
+            {
+                return true;
+            }
+            else
+            {
+                check(l, i);
+            }
+        }
+    }
+    return false;
+}
+
 // Print the winner of the election
 void print_winner(void)
 {
 
-    for (int i = 0; i < pair_count; i++)
+    for (int i = 0; i < candidate_count; i++)
     {
         int count = 0;
-        for (int j = 0; j < pair_count; j++)
+        for (int j = 0; j < candidate_count; j++)
         {
             if (locked[i][j] == true)
             {
