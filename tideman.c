@@ -119,7 +119,7 @@ void record_preferences(int ranks[])
     {
         for (int j = i + 1; j < candidate_count; j++)
         {
-                preferences[ranks[i]][ranks[j]]++;
+            preferences[ranks[i]][ranks[j]]++;
         }
     }
 
@@ -207,25 +207,9 @@ bool check(int n, int l)
 void print_winner(void)
 {
 
-    for (int i = 0; i < candidate_count; i++)
-    {
-        int count = 0;
-        for (int j = 0; j < candidate_count; j++)
-        {
-            if (locked[i][j] == true)
-            {
-                count++;
-            }
-        }
-        if (count == candidate_count - 1)
-        {
-            printf("%s\n", candidates[i]);
-            return;
-        }
-    }
 
-
-
+    //If theres no winner till here, then, (having locked "false" every cycle)
+    //The candidate who has no arrows pionting to him is the winner.
     for (int i = 0; i < candidate_count; i++)
     {
         int count1 = 0;
