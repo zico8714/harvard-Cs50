@@ -223,7 +223,7 @@ void print_winner(void)
         }
         else
         {
-            printf("%s\n", candidates[0]);
+            printf("%s\n", candidates[pairs[0].winner]);
         }
     }
     return;
