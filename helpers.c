@@ -231,15 +231,15 @@ void edges(int height, int width, RGBTRIPLE image[height][width])
             int G = round(sqrt(pow(GxsumG, 2) + pow(GysumG, 2)));
             int R = round(sqrt(pow(GxsumR, 2) + pow(GysumR, 2)));
 
-            if (B < 255)
+            if (B > 255)
             {
                 B = 255;
             }
-            if (G < 255)
+            if (G > 255)
             {
                 G = 255;
             }
-            if (R < 255)
+            if (R > 255)
             {
                 R = 255;
             }
