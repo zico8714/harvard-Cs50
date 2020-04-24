@@ -132,12 +132,12 @@ void edges(int height, int width, RGBTRIPLE image[height][width])
     {
         for (int j = 0; j < width; j++)
         {
-            int GxsumB;
-            int GxsumG;
-            int GxsumR;
-            int GysumB;
-            int GysumG;
-            int GysumR;
+            int GxsumB = 0;
+            int GxsumG= 0;
+            int GxsumR=0;
+            int GysumB=0;
+            int GysumG=0;
+            int GysumR=0;
 
             //Get every 3x3 grid
             //Gx
@@ -181,21 +181,6 @@ void edges(int height, int width, RGBTRIPLE image[height][width])
                             GxsumR += image[hGx][wGx].rgbtRed * 2;
                         }
                     }
-                }
-
-                if (GxsumB > 255)
-                {
-                    GxsumB = 255;
-                }
-
-                if (GxsumG > 255)
-                {
-                    GxsumG = 255;
-                }
-
-                if (GxsumR > 255)
-                {
-                    GxsumR = 255;
                 }
             }
             //Gy
@@ -241,24 +226,24 @@ void edges(int height, int width, RGBTRIPLE image[height][width])
                         }
                     }
                 }
-                if (GysumB > 255)
-                {
-                    GysumB = 255;
-                }
-
-                if (GysumG > 255)
-                {
-                    GysumG = 255;
-                }
-
-                if (GysumR > 255)
-                {
-                    GysumR = 255;
-                }
             }
             int B = round(sqrt(pow(GxsumB, 2) + pow(GysumB, 2)));
             int G = round(sqrt(pow(GxsumG, 2) + pow(GysumG, 2)));
             int R = round(sqrt(pow(GxsumR, 2) + pow(GysumR, 2)));
+
+            if (B < 255)
+            {
+                B = 255;
+            }
+            if (G < 255)
+            {
+                G = 255;
+            }
+            if (R < 255)
+            {
+                R = 255;
+            }
+
 
             image2[i][j].rgbtBlue = B;
             image2[i][j].rgbtGreen = G;
