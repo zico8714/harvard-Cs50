@@ -255,21 +255,13 @@ void edges(int height, int width, RGBTRIPLE image[height][width])
                     GysumR = 255;
                 }
             }
-            int powGxB = pow(GxsumB, 2);
-            int powGxG = pow(GxsumG, 2);
-            int powGxR = pow(GxsumR, 2);
+            int B = round(sqrt(pow(GxsumB, 2) + pow(GysumB, 2)));
+            int G = round(sqrt(pow(GxsumG, 2) + pow(GysumG, 2)));
+            int R = round(sqrt(pow(GxsumR, 2) + pow(GysumR, 2)));
 
-            int powGyB = pow(GysumB, 2);
-            int powGyG = pow(GysumG, 2);
-            int powGyR = pow(GysumR, 2);
-
-            float sqB = sqrt(powGxB + powGyB);
-            float sqG = sqrt(powGxG + powGyG);
-            float sqR = sqrt(powGxR + powGyR);
-
-            image2[i][j].rgbtBlue = round(sqB);
-            image2[i][j].rgbtGreen = round(sqG);
-            image2[i][j].rgbtRed = round(sqR);
+            image2[i][j].rgbtBlue = B;
+            image2[i][j].rgbtGreen = G;
+            image2[i][j].rgbtRed = R;
         }
     }
 
