@@ -145,7 +145,7 @@ void edges(int height, int width, RGBTRIPLE image[height][width])
             {
                 for (int wGx = j - 1; wGx < j + 2; wGx++)
                 {
-                    if (hGx < 0 || wGx < 0 || hGx = height || wGx = width || wGx == j)
+                    if (hGx < 0 || wGx < 0 || hGx == height || wGx == width || wGx == j)
                     {
                         GxsumB += 0;
                         GxsumG += 0;
@@ -188,7 +188,7 @@ void edges(int height, int width, RGBTRIPLE image[height][width])
             {
                 for (int wGy = j - 1; wGy < j + 2; wGy++)
                 {
-                    if (hGy < 0 || wGy < 0 || hGy = height || wGy = width || hGy == i)
+                    if (hGy < 0 || wGy < 0 || hGy == height || wGy == width || hGy == i)
                     {
                         GysumB += 0;
                         GysumG += 0;
