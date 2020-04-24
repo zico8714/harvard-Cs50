@@ -203,7 +203,7 @@ void edges(int height, int width, RGBTRIPLE image[height][width])
             {
                 for (int wGy = j - 1; wGy < j + 2; wGy++)
                 {
-                    if (hGy < 0 || wGy < 0 || hGy > height || wGy > width || wGy == i)
+                    if (hGy < 0 || wGy < 0 || hGy > height || wGy > width || hGy == i)
                     {
                         GysumB += 0;
                         GysumG += 0;
