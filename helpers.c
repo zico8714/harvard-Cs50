@@ -145,7 +145,7 @@ void edges(int height, int width, RGBTRIPLE image[height][width])
             {
                 for (int wGx = j - 1; wGx < j + 2; wGx++)
                 {
-                    if (hGx < 0 || wGx < 0 || hGx == height || wGx == width || wGx == j)
+                    if (hGx < 0 || wGx < 0 || hGx >= height || wGx >= width || wGx == j)
                     {
                         GxsumB += 0;
                         GxsumG += 0;
