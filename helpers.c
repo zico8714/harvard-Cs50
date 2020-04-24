@@ -163,7 +163,7 @@ void edges(int height, int width, RGBTRIPLE image[height][width])
                             GxsumR += image[hGx][wGx].rgbtRed * -2;
                         }
                     }
-                    else if (wGx == j + 1)
+                    else
                     {
                         if (hGx != i)
                         {
@@ -219,7 +219,7 @@ void edges(int height, int width, RGBTRIPLE image[height][width])
                             GysumR += image[hGy][wGy].rgbtRed * -2;
                         }
                     }
-                    else if (hGy == i + 1)
+                    else
                     {
                         if (wGy != j)
                         {
