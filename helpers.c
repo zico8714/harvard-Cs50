@@ -145,9 +145,12 @@ void edges(int height, int width, RGBTRIPLE image[height][width])
             {
                 for (int wGx = j - 1; wGx < j + 2; wGx++)
                 {
-                    if (hGx > 0 && wGx > 0 && hGx < height && wGx < width && wGx != j)
+                    if (hGx < 0 || wGx < 0 || hGx > height || wGx > width || wGx != j)
                     {
-
+                        GxsumB += 0;
+                        GxsumG += 0;
+                        GxsumR += 0;
+                    }
                     if (wGx == j - 1)
                     {
                         if (hGx != i)
@@ -179,7 +182,6 @@ void edges(int height, int width, RGBTRIPLE image[height][width])
                         }
                     }
                 }
-                }
 
                 if (GxsumB > 255)
                 {
@@ -201,8 +203,12 @@ void edges(int height, int width, RGBTRIPLE image[height][width])
             {
                 for (int wGy = j - 1; wGy < j + 2; wGy++)
                 {
-                    if (hGy > 0 && wGy > 0 && hGy < height && wGy < width && hGy != i)
+                    if (hGy < 0 || wGy < 0 || hGy > height || wGy > width || wGy != i)
                     {
+                        GysumB += 0;
+                        GysumG += 0;
+                        GysumR += 0;
+                    }
 
                     if (hGy == i - 1)
                     {
@@ -234,7 +240,6 @@ void edges(int height, int width, RGBTRIPLE image[height][width])
                             GysumR += image[hGy][wGy].rgbtRed * 2;
                         }
                     }
-                }
                 }
                 if (GysumB > 255)
                 {
