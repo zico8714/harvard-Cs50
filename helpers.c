@@ -157,9 +157,9 @@ void edges(int height, int width, RGBTRIPLE image[height][width])
     };
 
     //Get every pixel
-    for (int i  = 0; i < height; i++)
+    for (int i  = 1; i < height + 1; i++)
     {
-        for (int j = 0; j < width; j++)
+        for (int j = 1; j < width + 1; j++)
         {
             int GxsumB = 0;
             int GxsumG = 0;
