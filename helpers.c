@@ -145,106 +145,46 @@ void edges(int height, int width, RGBTRIPLE image[height][width])
             }
         }
     }
+
+    int Gx[3][3] = {
+        {-1, 0, 1},
+        {-2, 0, 2},
+        {-1, 0, 1}
+    }
+
+    int Gy[3][3] = {
+        {-1, -2, -1},
+        {0, 0, 0},
+        {1, 2, 1}
+    }
+
     //Get every pixel
     for (int i  = 0; i < height; i++)
     {
         for (int j = 0; j < width; j++)
         {
             int GxsumB = 0;
-            int GxsumG= 0;
-            int GxsumR=0;
-            int GysumB=0;
-            int GysumG=0;
-            int GysumR=0;
+            int GxsumG = 0;
+            int GxsumR = 0;
+            int GysumB = 0;
+            int GysumG = 0;
+            int GysumR = 0;
 
             //Get every 3x3 grid
             //Gx
-            for (int hGx = i - 1; hGx < i + 2; hGx++)
+            for (int hG = -1; hGx < 2; hGx++)
             {
-                for (int wGx = j - 1; wGx < j + 2; wGx++)
+                for (int wG = -1; wGx < 2; wGx++)
                 {
-                    if (hGx < 0 || wGx < 0 || hGx >= height || wGx >= width || wGx == j)
-                    {
-                        GxsumB += image2[hGx][wGx].rgbtBlue * 0;
-                        GxsumG += image2[hGx][wGx].rgbtGreen * 0;
-                        GxsumR += image2[hGx][wGx].rgbtRed * 0;
-                    }
-                    if (wGx == j - 1)
-                    {
-                        if (hGx != i)
-                        {
-                            GxsumB += image2[hGx][wGx].rgbtBlue * -1;
-                            GxsumG += image2[hGx][wGx].rgbtGreen * -1;
-                            GxsumR += image2[hGx][wGx].rgbtRed * -1;
-                        }
-                        else
-                        {
-                            GxsumB += image2[hGx][wGx].rgbtBlue * -2;
-                            GxsumG += image2[hGx][wGx].rgbtGreen * -2;
-                            GxsumR += image2[hGx][wGx].rgbtRed * -2;
-                        }
-                    }
-                    else
-                    {
-                        if (hGx != i)
-                        {
-                            GxsumB += image2[hGx][wGx].rgbtBlue * 1;
-                            GxsumG += image2[hGx][wGx].rgbtGreen * 1;
-                            GxsumR += image2[hGx][wGx].rgbtRed * 1;
-                        }
-                        else
-                        {
-                            GxsumB += image2[hGx][wGx].rgbtBlue * 2;
-                            GxsumG += image2[hGx][wGx].rgbtGreen * 2;
-                            GxsumR += image2[hGx][wGx].rgbtRed * 2;
-                        }
-                    }
+                    GxsumB = image2[hG + i][wG + j].rgbtBlue * Gx[hG + i][wG + j];
+                    GxsumG = image2[hG + i][wG + j].rgbtGreen * Gx[hG + i][wG + j];
+                    GxsumR = image2[hG + i][wG + j].rgbtRed * Gx[hG + i][wG + j];
+                    GysumB = image2[hG + i][wG + j].rgbtBlue * Gy[hG + i][wG + j];
+                    GysumG = image2[hG + i][wG + j].rgbtGreen * Gy[hG + i][wG + j];
+                    GysumR = image2[hG + i][wG + j].rgbtRed * Gy[hG + i][wG + j];
                 }
             }
-            //Gy
-            for (int hGy = i - 1; hGy < i + 2; hGy++)
-            {
-                for (int wGy = j - 1; wGy < j + 2; wGy++)
-                {
-                    if (hGy < 0 || wGy < 0 || hGy >= height || wGy >= width || hGy == i)
-                    {
-                        GysumB += image2[hGy][wGy].rgbtBlue * 0;
-                        GysumG += image2[hGy][wGy].rgbtGreen * 0;
-                        GysumR += image2[hGy][wGy].rgbtRed * 0;
-                    }
 
-                    if (hGy == i - 1)
-                    {
-                        if (wGy != j)
-                        {
-                            GysumB += image2[hGy][wGy].rgbtBlue * -1;
-                            GysumG += image2[hGy][wGy].rgbtGreen * -1;
-                            GysumR += image2[hGy][wGy].rgbtRed * -1;
-                        }
-                        else
-                        {
-                            GysumB += image2[hGy][wGy].rgbtBlue * -2;
-                            GysumG += image2[hGy][wGy].rgbtGreen * -2;
-                            GysumR += image2[hGy][wGy].rgbtRed * -2;
-                        }
-                    }
-                    else
-                    {
-                        if (wGy != j)
-                        {
-                            GysumB += image2[hGy][wGy].rgbtBlue * 1;
-                            GysumG += image2[hGy][wGy].rgbtGreen * 1;
-                            GysumR += image2[hGy][wGy].rgbtRed * 1;
-                        }
-                        else
-                        {
-                            GysumB += image2[hGy][wGy].rgbtBlue * 2;
-                            GysumG += image2[hGy][wGy].rgbtGreen * 2;
-                            GysumR += image2[hGy][wGy].rgbtRed * 2;
-                        }
-                    }
-                }
-            }
             int B = round(sqrt(pow(GxsumB, 2) + pow(GysumB, 2)));
             int G = round(sqrt(pow(GxsumG, 2) + pow(GysumG, 2)));
             int R = round(sqrt(pow(GxsumR, 2) + pow(GysumR, 2)));
