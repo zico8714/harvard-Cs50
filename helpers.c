@@ -150,13 +150,13 @@ void edges(int height, int width, RGBTRIPLE image[height][width])
         {-1, 0, 1},
         {-2, 0, 2},
         {-1, 0, 1}
-    }
+    };
 
     int Gy[3][3] = {
         {-1, -2, -1},
         {0, 0, 0},
         {1, 2, 1}
-    }
+    };
 
     //Get every pixel
     for (int i  = 0; i < height; i++)
@@ -172,9 +172,9 @@ void edges(int height, int width, RGBTRIPLE image[height][width])
 
             //Get every 3x3 grid
             //Gx
-            for (int hG = -1; hGx < 2; hGx++)
+            for (int hG = -1; hG < 2; hG++)
             {
-                for (int wG = -1; wGx < 2; wGx++)
+                for (int wG = -1; wG < 2; wG++)
                 {
                     GxsumB = image2[hG + i][wG + j].rgbtBlue * Gx[hG + i][wG + j];
                     GxsumG = image2[hG + i][wG + j].rgbtGreen * Gx[hG + i][wG + j];
