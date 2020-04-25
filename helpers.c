@@ -124,79 +124,86 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
 // Detect edges
 void edges(int height, int width, RGBTRIPLE image[height][width])
 {
-    // Creating a copy of image with an extra border of black layer
-    RGBTRIPLE copy[height + 2][width + 2];
-    for (int i = 0; i < height + 2; i++)
+    //Create a second base
+    RGBTRIPLE image2[height + 2][width + 2];
+
+    for (int a = 0; a < height + 2; a++)
     {
-        for (int j = 0; j < width + 2; j++)
+        for (int m = 0; m < width + 2; m++)
         {
-            if (i == 0 || j == 0 || i == height + 1 || j == width + 1)
+            if (m == 0 || a == 0 || a == height + 1 || a == width + 1)
             {
-                copy[i][j].rgbtRed = 0;
-                copy[i][j].rgbtGreen = 0;
-                copy[i][j].rgbtBlue = 0;
+                image2[a][m].rgbtBlue = 0;
+                image2[a][m].rgbtGreen = 0;
+                image2[a][m].rgbtRed = 0;
             }
             else
             {
-                copy[i][j] = image[i - 1][j - 1];
+                image2[a][m] = image[a - 1][m - 1];
             }
         }
     }
-    // Create the matrix Gx and Gy
-    int Gx[3][3] =
-    {
+
+    int Gx[3][3] = {
         {-1, 0, 1},
         {-2, 0, 2},
         {-1, 0, 1}
     };
-    int Gy[3][3] =
-    {
+
+    int Gy[3][3] = {
         {-1, -2, -1},
         {0, 0, 0},
         {1, 2, 1}
     };
-    for (int i = 1; i < height + 1; i++)
+
+    //Get every pixel
+    for (int i  = 1; i < height + 1; i++)
     {
         for (int j = 1; j < width + 1; j++)
         {
-            // Total values for red-x, green-x, blue-x, red-y, green-y and blue-y
-            int aRx = 0;
-            int aGx = 0;
-            int aBx = 0;
-            int aRy = 0;
-            int aGy = 0;
-            int aBy = 0;
-            for (int a = -1; a < 2; a++)
+            int GxsumB = 0;
+            int GxsumG = 0;
+            int GxsumR = 0;
+            int GysumB = 0;
+            int GysumG = 0;
+            int GysumR = 0;
+
+            //Get every 3x3 grid
+            //Gx
+            for (int hG = -1; hG < 2; hG++)
             {
-                for (int b = -1; b < 2; b++)
+                for (int wG = -1; wG < 2; wG++)
                 {
-                    aRx += (copy[i + a][j + b].rgbtRed * Gx[a + 1][b + 1]);
-                    aGx += (copy[i + a][j + b].rgbtGreen * Gx[a + 1][b + 1]);
-                    aBx += (copy[i + a][j + b].rgbtBlue * Gx[a + 1][b + 1]);
-                    aRy += (copy[i + a][j + b].rgbtRed * Gy[a + 1][b + 1]);
-                    aGy += (copy[i + a][j + b].rgbtGreen * Gy[a + 1][b + 1]);
-                    aBy += (copy[i + a][j + b].rgbtBlue * Gy[a + 1][b + 1]);
+                    GxsumB = image2[i + hG][j + wG].rgbtBlue * Gx[hG + i][wG + j];
+                    GxsumG = image2[i + hG][j + wG].rgbtGreen * Gx[hG + i][wG + j];
+                    GxsumR = image2[i + hG][j + wG].rgbtRed * Gx[hG + i][wG + j];
+                    GysumB = image2[i + hG][j + wG].rgbtBlue * Gy[hG + i][wG + j];
+                    GysumG = image2[i + hG][j + wG].rgbtGreen * Gy[hG + i][wG + j];
+                    GysumR = image2[i + hG][j + wG].rgbtRed * Gy[hG + i][wG + j];
                 }
             }
-            int redG = round(sqrt(pow(aRx, 2) + pow(aRy, 2)));
-            int greenG = round(sqrt(pow(aGx, 2) + pow(aGy, 2)));
-            int blueG = round(sqrt(pow(aBx, 2) + pow(aBy, 2)));
-            // Wrapping values over 255 to within 1 to 255
-            if (redG > 255)
+
+            int B = round(sqrt(pow(GxsumB, 2) + pow(GysumB, 2)));
+            int G = round(sqrt(pow(GxsumG, 2) + pow(GysumG, 2)));
+            int R = round(sqrt(pow(GxsumR, 2) + pow(GysumR, 2)));
+
+            if (B > 255)
             {
-                redG = 255;
+                B = 255;
             }
-            if (greenG > 255)
+
+            if (G > 255)
             {
-                greenG = 255;
+                G = 255;
             }
-            if (blueG > 255)
+
+            if (R > 255)
             {
-                blueG = 255;
+                R = 255;
             }
-            image[i - 1][j - 1].rgbtRed = redG;
-            image[i - 1][j - 1].rgbtGreen = greenG;
-            image[i - 1][j - 1].rgbtBlue = blueG;
+            image[i - 1][j - 1].rgbtBlue = B;
+            image[i - 1][j - 1].rgbtGreen = G;
+            image[i - 1][j - 1].rgbtRed = R;
         }
     }
     return;
