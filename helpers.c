@@ -139,9 +139,7 @@ void edges(int height, int width, RGBTRIPLE image[height][width])
             }
             else
             {
-                image2[a][m].rgbtBlue = image[a][m].rgbtBlue;
-                image2[a][m].rgbtGreen = image[a][m].rgbtGreen;
-                image2[a][m].rgbtRed = image[a][m].rgbtRed;
+                image2[a][m] = image[a - 1][m - 1];
             }
         }
     }
@@ -203,13 +201,10 @@ void edges(int height, int width, RGBTRIPLE image[height][width])
             {
                 R = 255;
             }
-
-
             image[i][j].rgbtBlue = B;
             image[i][j].rgbtGreen = G;
             image[i][j].rgbtRed = R;
         }
     }
-
     return;
 }
