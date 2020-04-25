@@ -265,20 +265,11 @@ void edges(int height, int width, RGBTRIPLE image[height][width])
             }
 
 
-            image2[i][j].rgbtBlue = B;
-            image2[i][j].rgbtGreen = G;
-            image2[i][j].rgbtRed = R;
+            image[i][j].rgbtBlue = B;
+            image[i][j].rgbtGreen = G;
+            image[i][j].rgbtRed = R;
         }
     }
 
-    for (int a = 1; a < height + 1; a++)
-    {
-        for (int l = 1; l < width + 1; l++)
-        {
-            image[a - 1][l - 1].rgbtRed = image2[a - 1][l - 1].rgbtRed;
-            image[a - 1][l - 1].rgbtGreen = image2[a - 1][l - 1].rgbtGreen;
-            image[a - 1][l - 1].rgbtBlue = image2[a - 1][l - 1].rgbtBlue;
-        }
-    }
     return;
 }
