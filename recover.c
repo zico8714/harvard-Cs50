@@ -32,29 +32,29 @@ int main(int argc, char *argv[])
     while (!feof(inptr))
     {
         BYTE buffer[512];
-        int x = fread(buffer, sizeof(BYTE), 512, inptr);
+        //int x = fread(buffer, sizeof(BYTE), 512, inptr);
         while(fread(buffer, sizeof(BYTE), 512, inptr) == 512)
-        {
-        if (buffer[0] == 0xff && buffer[1] == 0xd8 && buffer[2] == 0xff && (buffer[3] & 0xf0) == 0xe0)
-        {
-            //close previous file
-            sprintf(outimg, "%03i.jpg", count);
-            count++;
-            FILE* outptr = fopen(outimg, "w");
-            fwrite(buffer, sizeof(BYTE), 512, outptr);
-            fclose(outptr);
-        }
-        else if (count == 0)
-        {
-            countV++;
-        }
-        else
-        {
-            FILE* outptr = fopen(outimg, "a");
-            fseek(outptr, 0, SEEK_END);
-            fwrite(buffer, sizeof(BYTE), 512, outptr);
-            fclose(outptr);
-        }
+            {
+            if (buffer[0] == 0xff && buffer[1] == 0xd8 && buffer[2] == 0xff && (buffer[3] & 0xf0) == 0xe0)
+            {
+                //close previous file
+                sprintf(outimg, "%03i.jpg", count);
+                count++;
+                FILE* outptr = fopen(outimg, "w");
+                fwrite(buffer, sizeof(BYTE), 512, outptr);
+                fclose(outptr);
+            }
+            else if (count == 0)
+            {
+                countV++;
+            }
+            else
+            {
+                FILE* outptr = fopen(outimg, "a");
+                fseek(outptr, 0, SEEK_END);
+                fwrite(buffer, sizeof(BYTE), 512, outptr);
+                fclose(outptr);
+            }
         }
     }
     fclose(inptr);
