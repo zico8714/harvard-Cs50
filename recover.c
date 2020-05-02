@@ -15,7 +15,6 @@ int main(int argc, char *argv[])
     }
 
     char *inc = argv[1];
-    //char *outimg = malloc(sizeof(BYTE) * 512);
     char outimg[8];
 
     // Open input card
@@ -28,11 +27,11 @@ int main(int argc, char *argv[])
 
     int countV = 0;
     int count = 0;
+BYTE buffer[512];
 
-
-    while (!feof(inptr))
+    while (fread(buffer, 1, 512, inptr) == 512)
     {
-        BYTE buffer[512];
+        
         int x = fread(buffer, sizeof(BYTE), 512, inptr);
         if (buffer[0] == 0xff && buffer[1] == 0xd8 && buffer[2] == 0xff && (buffer[3] & 0xf0) == 0xe0)
         {
@@ -55,6 +54,5 @@ int main(int argc, char *argv[])
             fclose(outptr);
         }
     }
-    //free(outimg);
     fclose(inptr);
 }
