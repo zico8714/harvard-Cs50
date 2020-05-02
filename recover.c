@@ -15,7 +15,8 @@ int main(int argc, char *argv[])
     }
 
     char *inc = argv[1];
-    char *outimg = malloc(sizeof(BYTE) * 512);
+    //char *outimg = malloc(sizeof(BYTE) * 512);
+    char outimg[8];
 
     // Open input card
     FILE *inptr = fopen(inc, "r");
@@ -54,6 +55,6 @@ int main(int argc, char *argv[])
             fclose(outptr);
         }
     }
-    free(outimg);
+    //free(outimg);
     fclose(inptr);
 }
