@@ -28,29 +28,31 @@ int main(int argc, char *argv[])
     int countV = 0;
     int count = 0;
 
-
+    //While loop till end of file
     while (!feof(inptr))
     {
+        //While loop if buffer is 512 bytes
         BYTE buffer[512];
-        //int x = fread(buffer, sizeof(BYTE), 512, inptr);
-        while(fread(buffer, sizeof(BYTE), 512, inptr) == 512)
-            {
+        while (fread(buffer, sizeof(BYTE), 512, inptr) == 512)
+        {
             if (buffer[0] == 0xff && buffer[1] == 0xd8 && buffer[2] == 0xff && (buffer[3] & 0xf0) == 0xe0)
             {
                 //close previous file
                 sprintf(outimg, "%03i.jpg", count);
                 count++;
-                FILE* outptr = fopen(outimg, "w");
+                FILE *outptr = fopen(outimg, "w");
                 fwrite(buffer, sizeof(BYTE), 512, outptr);
                 fclose(outptr);
             }
+            //Just to avoid doing else
             else if (count == 0)
             {
                 countV++;
             }
+            //Apend info to a file
             else
             {
-                FILE* outptr = fopen(outimg, "a");
+                FILE *outptr = fopen(outimg, "a");
                 fseek(outptr, 0, SEEK_END);
                 fwrite(buffer, sizeof(BYTE), 512, outptr);
                 fclose(outptr);
